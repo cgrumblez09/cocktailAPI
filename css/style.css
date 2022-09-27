@@ -15,7 +15,10 @@ img{
   margin: 0 auto;
   height: 200px;
 }
-
+#ingMeas{
+  display: flex;
+  flex-direction: row;
+}
 #forward, #backward{
   display: none;
 }
