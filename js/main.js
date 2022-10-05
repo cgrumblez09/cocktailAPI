@@ -5,7 +5,7 @@ document.querySelector('#search').addEventListener('click', searchCocktail);
 //     document.querySelector('h2').innerText = data.drinks[i]
 // }
 function searchCocktail(){
-        let drink = document.querySelector('input').value.toLowerCase()
+        let drink = document.querySelector('input').value.toLowerCase().trim();
         let li = document.getElementsByTagName('li')
           while(li.length > 0){
             li[0].remove();
