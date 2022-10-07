@@ -5,25 +5,73 @@
 /* Box Model Hack */
 *{
   box-sizing: border-box;
+  font-size: 105%;
+}
+
+:root{
+  --orange: rgb(199,100,25);
+  --green: rgb(18,31,25)
+}
+body{
+  background-color: var(--green);
+  color: var(--orange);
+  font-family: "Sorts Mill Goudy" , Arial, Helvetica, sans-serif;
 }
 
 /******************************************
 /* LAYOUT
 /*******************************************/
+h1 , h2, #recipeNum, #instruct{
+  text-align: center;
+}
+#getDrinkContainer{
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+input{
+  text-align: center;
+  width: 200px;
+}
+#search{
+  width: 200px;
+}
+#backward , #forward{
+  width: 98px;
+  margin: 0;
+}
 img{
+  /* border: 1px solid red; */
   display: block;
   margin: 0 auto;
   height: 200px;
 }
 #ingMeas{
+  /* border: 1px solid red; */
+  text-align: center;
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 #forward, #backward{
   display: none;
 }
+#ingredient{
+  list-style:decimal;
+}
+#measurements{
+  text-align: left;
+  list-style: none;
+}
 
-
+#instruct{
+  /* border: 1px solid green; */
+  width: 60%;
+  margin: auto;
+  margin-top: 1vh;
+}
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/

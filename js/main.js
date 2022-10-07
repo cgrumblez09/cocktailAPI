@@ -38,7 +38,7 @@ function searchCocktail(){
         // BELOW CODE ADDS THE RECIPE #, THE DRINK NAME, DRINK INSTRUCTION AND DRINK IMAGE
           document.querySelector('#recipeNum').innerText = `Recipe Num: ${count + 1} of ${data.drinks.length}`
           document.querySelector('h2').innerText = data.drinks[count].strDrink
-          document.querySelector('#instruct').innerHTML = data.drinks[count].strInstructions
+          document.querySelector('#instruct').innerHTML = 'Instructions: \n' + data.drinks[count].strInstructions
           document.querySelector('img').src = data.drinks[count].strDrinkThumb
       
       // document.querySelector('ul').innerHTML = '';  THIS WILL REMOVE ALL CODE IN THE UL

@@ -6,7 +6,9 @@
     	<meta name="keywords" content="one, two, three">
 
 		<title>Title in the tab</title>
-
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
 		<!-- external CSS link -->
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/style.css">
@@ -14,11 +16,13 @@
 	<body>
 
 		<h1>Which Cocktail?</h1>
-		<input type="text" name="" value="">
-		<button id = 'search' type="button" name="button">Get Cocktail</button>
-		<div id = "arrows">
-			<button id = 'forward' type="button" name="button">Next</button>
-			<button id = 'backward' type="button" name="button">Previous</button>
+		<div id = 'getDrinkContainer'>
+			<input type="text" name="" value="">
+			<button id = 'search' type="button" name="button">Get Cocktail</button>
+			<div id = "arrows">				
+				<button id = 'backward' type="button" name="button">Previous</button>
+				<button id = 'forward' type="button" name="button">Next</button>
+			</div>
 		</div>
 
 		<h2>Name</h2>
