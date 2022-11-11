@@ -3,7 +3,23 @@ document.querySelector('#search').addEventListener('click', searchCocktail);
 document.querySelector('#forward').addEventListener('click', nextCocktail)
 document.querySelector('#backward').addEventListener('click', prevCocktail)
 const input = document.querySelector('input');
+
+const vodka = document.querySelector('#vodka');
+const whiskey = document.querySelector('#whiskey');
+const tequila = document.querySelector('#tequila');
+const rum = document.querySelector('#rum');
+const gin = document.querySelector('#gin');
+const beer = document.querySelector('#beer');
+const wine = document.querySelector('#wine');
+
 input.addEventListener('keypress' , enterCocktail);
+vodka.addEventListener('click', getVodka);
+whiskey.addEventListener('click', getWhiskey);
+tequila.addEventListener('click', getTequila);
+rum.addEventListener('click', getRum);
+gin.addEventListener('click', getGin);
+beer.addEventListener('click', getBeer);
+wine.addEventListener('click', getWine);
 
 let drinkArr = [];
 // COUNT IS TO TRACK WHERE IN THE ARRAY THE LIST IS ON, STARTS AT INDEX 0
@@ -238,6 +254,442 @@ function prevCocktail(){
     });
 }
 
+function getVodka(){
+  //SUPPOSED TO REMOVE ANY 'li' IN THE UL OF INGREDIENTS AND MEASUREMENTS
+  let li = document.getElementsByTagName('li')
+    while(li.length > 0){
+      li[0].remove();
+    }
+  // COUNT++ MOVES TO NEXT DRINK ON THE DRINK LIST. IN THIS CASE THE FIRST INDEX IN VODKA
+  count = 0
+  console.log(count)
+
+  //MAKES THE NEXT AND PREVIOUS BUTTONS APPEAR AFTER A DRINK IS ENTERED 
+  document.querySelector('#forward').style.display = 'inline';
+  document.querySelector('#backward').style.display = 'inline';
+
+  // let drink = document.querySelector('input').value.toLowerCase().trim();
+  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=vodka`)
+
+    .then(res => res.json()) // parse response as JSON
+    .then(data => {
+      console.log(data)
+      // console.log(count)
+
+      // IF COUNT GOES ABOVE TOTAL DRINKS IN LIST ROTATE TO BEGINNING OF LIST
+      // if(count > data.drinks.length - 1){
+      //   console.log(count = 0)
+      //   count = 0
+      // }
+    
+      // LINE OF CODE ADDS THE ALCHOHOL NAME TO THE INPUT 
+      document.querySelector('input').value = 'Vodka'
+    
+      // BELOW CODE CHANGES DOM TO NEXT DRINK
+      document.querySelector('#recipeNum').innerText = `Recipe Num: ${count + 1} of ${data.drinks.length}`
+      document.querySelector('h2').innerText = data.drinks[count].strDrink
+      document.querySelector('#instruct').innerHTML = data.drinks[count].strInstructions
+      document.querySelector('img').src = data.drinks[count].strDrinkThumb
+      document.querySelector('#glass').innerText = `Type of Glass: ${data.drinks[count].strGlass}`
+
+      // document.querySelector('ul').innerHTML = '';  THIS WILL REMOVE ALL CODE IN THE UL
+      
+      // for(let i = count, j = 1, k = 1; i < data.drinks.length; i++){
+      // BELOW IS TO DISPLAY DRINK INGREDIENTS AND MEASUREMENTS
+      let i = count, j = 1, k = 1;
+      while(data.drinks[i][`strIngredient${j}`] !== null){
+          let ingredient = document.createElement('li')
+          ingredient.innerText = data.drinks[i][`strIngredient${j}`]
+          document.querySelector('#ingredient').appendChild(ingredient)
+          j++
+      }
+      while(data.drinks[i][`strMeasure${k}`] !== null){
+          let measure = document.createElement('li')
+          measure.innerText = data.drinks[i][`strMeasure${k}`]
+          document.querySelector('#measurements').appendChild(measure)
+          k++
+      }
+    // }
+})
+    .catch(err => {
+        console.log(`error ${err}`)
+    });
+}
+
+function getWhiskey(){
+  //SUPPOSED TO REMOVE ANY 'li' IN THE UL OF INGREDIENTS AND MEASUREMENTS
+  let li = document.getElementsByTagName('li')
+    while(li.length > 0){
+      li[0].remove();
+    }
+  // COUNT++ MOVES TO NEXT DRINK ON THE DRINK LIST. IN THIS CASE THE FIRST INDEX IN VODKA
+  count = 0
+  console.log(count)
+
+  //MAKES THE NEXT AND PREVIOUS BUTTONS APPEAR AFTER A DRINK IS ENTERED 
+  document.querySelector('#forward').style.display = 'inline';
+  document.querySelector('#backward').style.display = 'inline';
+
+  // let drink = document.querySelector('input').value.toLowerCase().trim();
+  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=whiskey`)
+
+    .then(res => res.json()) // parse response as JSON
+    .then(data => {
+      console.log(data)
+      // console.log(count)
+
+      // IF COUNT GOES ABOVE TOTAL DRINKS IN LIST ROTATE TO BEGINNING OF LIST
+      // if(count > data.drinks.length - 1){
+      //   console.log(count = 0)
+      //   count = 0
+      // }
+
+      // LINE OF CODE ADDS THE ALCHOHOL NAME TO THE INPUT 
+      document.querySelector('input').value = 'Whiskey'
+
+    // BELOW CODE CHANGES DOM TO NEXT DRINK
+      document.querySelector('#recipeNum').innerText = `Recipe Num: ${count + 1} of ${data.drinks.length}`
+      document.querySelector('h2').innerText = data.drinks[count].strDrink
+      document.querySelector('#instruct').innerHTML = data.drinks[count].strInstructions
+      document.querySelector('img').src = data.drinks[count].strDrinkThumb
+      document.querySelector('#glass').innerText = `Type of Glass: ${data.drinks[count].strGlass}`
+
+      // document.querySelector('ul').innerHTML = '';  THIS WILL REMOVE ALL CODE IN THE UL
+      
+      // for(let i = count, j = 1, k = 1; i < data.drinks.length; i++){
+      // BELOW IS TO DISPLAY DRINK INGREDIENTS AND MEASUREMENTS
+      let i = count, j = 1, k = 1;
+      while(data.drinks[i][`strIngredient${j}`] !== null){
+          let ingredient = document.createElement('li')
+          ingredient.innerText = data.drinks[i][`strIngredient${j}`]
+          document.querySelector('#ingredient').appendChild(ingredient)
+          j++
+      }
+      while(data.drinks[i][`strMeasure${k}`] !== null){
+          let measure = document.createElement('li')
+          measure.innerText = data.drinks[i][`strMeasure${k}`]
+          document.querySelector('#measurements').appendChild(measure)
+          k++
+      }
+    // }
+})
+    .catch(err => {
+        console.log(`error ${err}`)
+    });
+}
+
+
+function getTequila(){
+  //SUPPOSED TO REMOVE ANY 'li' IN THE UL OF INGREDIENTS AND MEASUREMENTS
+  let li = document.getElementsByTagName('li')
+    while(li.length > 0){
+      li[0].remove();
+    }
+  // COUNT++ MOVES TO NEXT DRINK ON THE DRINK LIST. IN THIS CASE THE FIRST INDEX IN VODKA
+  count = 0
+  console.log(count)
+
+    //MAKES THE NEXT AND PREVIOUS BUTTONS APPEAR AFTER A DRINK IS ENTERED 
+    document.querySelector('#forward').style.display = 'inline';
+    document.querySelector('#backward').style.display = 'inline';
+
+  // let drink = document.querySelector('input').value.toLowerCase().trim();
+  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=tequila`)
+
+    .then(res => res.json()) // parse response as JSON
+    .then(data => {
+      console.log(data)
+      // console.log(count)
+
+      // IF COUNT GOES ABOVE TOTAL DRINKS IN LIST ROTATE TO BEGINNING OF LIST
+      // if(count > data.drinks.length - 1){
+      //   console.log(count = 0)
+      //   count = 0
+      // }
+
+      // LINE OF CODE ADDS THE ALCHOHOL NAME TO THE INPUT 
+      document.querySelector('input').value = 'Tequila'
+
+    // BELOW CODE CHANGES DOM TO NEXT DRINK
+      document.querySelector('#recipeNum').innerText = `Recipe Num: ${count + 1} of ${data.drinks.length}`
+      document.querySelector('h2').innerText = data.drinks[count].strDrink
+      document.querySelector('#instruct').innerHTML = data.drinks[count].strInstructions
+      document.querySelector('img').src = data.drinks[count].strDrinkThumb
+      document.querySelector('#glass').innerText = `Type of Glass: ${data.drinks[count].strGlass}`
+
+      // document.querySelector('ul').innerHTML = '';  THIS WILL REMOVE ALL CODE IN THE UL
+      
+      // for(let i = count, j = 1, k = 1; i < data.drinks.length; i++){
+      // BELOW IS TO DISPLAY DRINK INGREDIENTS AND MEASUREMENTS
+      let i = count, j = 1, k = 1;
+      while(data.drinks[i][`strIngredient${j}`] !== null){
+          let ingredient = document.createElement('li')
+          ingredient.innerText = data.drinks[i][`strIngredient${j}`]
+          document.querySelector('#ingredient').appendChild(ingredient)
+          j++
+      }
+      while(data.drinks[i][`strMeasure${k}`] !== null){
+          let measure = document.createElement('li')
+          measure.innerText = data.drinks[i][`strMeasure${k}`]
+          document.querySelector('#measurements').appendChild(measure)
+          k++
+      }
+    // }
+})
+    .catch(err => {
+        console.log(`error ${err}`)
+    });
+}
+
+function getRum(){
+  //SUPPOSED TO REMOVE ANY 'li' IN THE UL OF INGREDIENTS AND MEASUREMENTS
+  let li = document.getElementsByTagName('li')
+    while(li.length > 0){
+      li[0].remove();
+    }
+  // COUNT++ MOVES TO NEXT DRINK ON THE DRINK LIST. IN THIS CASE THE FIRST INDEX IN VODKA
+  count = 0
+  console.log(count)
+
+  //MAKES THE NEXT AND PREVIOUS BUTTONS APPEAR AFTER A DRINK IS ENTERED 
+  document.querySelector('#forward').style.display = 'inline';
+  document.querySelector('#backward').style.display = 'inline';
+
+  // let drink = document.querySelector('input').value.toLowerCase().trim();
+  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=rum`)
+
+    .then(res => res.json()) // parse response as JSON
+    .then(data => {
+      console.log(data)
+      // console.log(count)
+
+      // IF COUNT GOES ABOVE TOTAL DRINKS IN LIST ROTATE TO BEGINNING OF LIST
+      // if(count > data.drinks.length - 1){
+      //   console.log(count = 0)
+      //   count = 0
+      // }
+
+      // LINE OF CODE ADDS THE ALCHOHOL NAME TO THE INPUT 
+      document.querySelector('input').value = 'Rum'
+
+    // BELOW CODE CHANGES DOM TO NEXT DRINK
+      document.querySelector('#recipeNum').innerText = `Recipe Num: ${count + 1} of ${data.drinks.length}`
+      document.querySelector('h2').innerText = data.drinks[count].strDrink
+      document.querySelector('#instruct').innerHTML = data.drinks[count].strInstructions
+      document.querySelector('img').src = data.drinks[count].strDrinkThumb
+      document.querySelector('#glass').innerText = `Type of Glass: ${data.drinks[count].strGlass}`
+
+      // document.querySelector('ul').innerHTML = '';  THIS WILL REMOVE ALL CODE IN THE UL
+      
+      // for(let i = count, j = 1, k = 1; i < data.drinks.length; i++){
+      // BELOW IS TO DISPLAY DRINK INGREDIENTS AND MEASUREMENTS
+      let i = count, j = 1, k = 1;
+      while(data.drinks[i][`strIngredient${j}`] !== null){
+          let ingredient = document.createElement('li')
+          ingredient.innerText = data.drinks[i][`strIngredient${j}`]
+          document.querySelector('#ingredient').appendChild(ingredient)
+          j++
+      }
+      while(data.drinks[i][`strMeasure${k}`] !== null){
+          let measure = document.createElement('li')
+          measure.innerText = data.drinks[i][`strMeasure${k}`]
+          document.querySelector('#measurements').appendChild(measure)
+          k++
+      }
+    // }
+})
+    .catch(err => {
+        console.log(`error ${err}`)
+    });
+}
+
+function getGin(){
+  //SUPPOSED TO REMOVE ANY 'li' IN THE UL OF INGREDIENTS AND MEASUREMENTS
+  let li = document.getElementsByTagName('li')
+    while(li.length > 0){
+      li[0].remove();
+    }
+  // COUNT++ MOVES TO NEXT DRINK ON THE DRINK LIST. IN THIS CASE THE FIRST INDEX IN VODKA
+  count = 0
+  console.log(count)
+
+  //MAKES THE NEXT AND PREVIOUS BUTTONS APPEAR AFTER A DRINK IS ENTERED 
+  document.querySelector('#forward').style.display = 'inline';
+  document.querySelector('#backward').style.display = 'inline';
+
+  // let drink = document.querySelector('input').value.toLowerCase().trim();
+  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=gin`)
+
+    .then(res => res.json()) // parse response as JSON
+    .then(data => {
+      console.log(data)
+      // console.log(count)
+
+      // IF COUNT GOES ABOVE TOTAL DRINKS IN LIST ROTATE TO BEGINNING OF LIST
+      // if(count > data.drinks.length - 1){
+      //   console.log(count = 0)
+      //   count = 0
+      // }
+
+      // LINE OF CODE ADDS THE ALCHOHOL NAME TO THE INPUT 
+      document.querySelector('input').value = 'Rum'
+
+    // BELOW CODE CHANGES DOM TO NEXT DRINK
+      document.querySelector('#recipeNum').innerText = `Recipe Num: ${count + 1} of ${data.drinks.length}`
+      document.querySelector('h2').innerText = data.drinks[count].strDrink
+      document.querySelector('#instruct').innerHTML = data.drinks[count].strInstructions
+      document.querySelector('img').src = data.drinks[count].strDrinkThumb
+      document.querySelector('#glass').innerText = `Type of Glass: ${data.drinks[count].strGlass}`
+
+      // document.querySelector('ul').innerHTML = '';  THIS WILL REMOVE ALL CODE IN THE UL
+      
+      // for(let i = count, j = 1, k = 1; i < data.drinks.length; i++){
+      // BELOW IS TO DISPLAY DRINK INGREDIENTS AND MEASUREMENTS
+      let i = count, j = 1, k = 1;
+      while(data.drinks[i][`strIngredient${j}`] !== null){
+          let ingredient = document.createElement('li')
+          ingredient.innerText = data.drinks[i][`strIngredient${j}`]
+          document.querySelector('#ingredient').appendChild(ingredient)
+          j++
+      }
+      while(data.drinks[i][`strMeasure${k}`] !== null){
+          let measure = document.createElement('li')
+          measure.innerText = data.drinks[i][`strMeasure${k}`]
+          document.querySelector('#measurements').appendChild(measure)
+          k++
+      }
+    // }
+})
+    .catch(err => {
+        console.log(`error ${err}`)
+    });
+}
+
+function getBeer(){
+  //SUPPOSED TO REMOVE ANY 'li' IN THE UL OF INGREDIENTS AND MEASUREMENTS
+  let li = document.getElementsByTagName('li')
+    while(li.length > 0){
+      li[0].remove();
+    }
+  // COUNT++ MOVES TO NEXT DRINK ON THE DRINK LIST. IN THIS CASE THE FIRST INDEX IN VODKA
+  count = 0
+  console.log(count)
+
+  //MAKES THE NEXT AND PREVIOUS BUTTONS APPEAR AFTER A DRINK IS ENTERED 
+  document.querySelector('#forward').style.display = 'inline';
+  document.querySelector('#backward').style.display = 'inline';
+
+  // let drink = document.querySelector('input').value.toLowerCase().trim();
+  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=beer`)
+
+    .then(res => res.json()) // parse response as JSON
+    .then(data => {
+      console.log(data)
+      // console.log(count)
+
+      // IF COUNT GOES ABOVE TOTAL DRINKS IN LIST ROTATE TO BEGINNING OF LIST
+      // if(count > data.drinks.length - 1){
+      //   console.log(count = 0)
+      //   count = 0
+      // }
+
+      // LINE OF CODE ADDS THE ALCHOHOL NAME TO THE INPUT 
+      document.querySelector('input').value = 'Beer'
+
+    // BELOW CODE CHANGES DOM TO NEXT DRINK
+      document.querySelector('#recipeNum').innerText = `Recipe Num: ${count + 1} of ${data.drinks.length}`
+      document.querySelector('h2').innerText = data.drinks[count].strDrink
+      document.querySelector('#instruct').innerHTML = data.drinks[count].strInstructions
+      document.querySelector('img').src = data.drinks[count].strDrinkThumb
+      document.querySelector('#glass').innerText = `Type of Glass: ${data.drinks[count].strGlass}`
+
+      // document.querySelector('ul').innerHTML = '';  THIS WILL REMOVE ALL CODE IN THE UL
+      
+      // for(let i = count, j = 1, k = 1; i < data.drinks.length; i++){
+      // BELOW IS TO DISPLAY DRINK INGREDIENTS AND MEASUREMENTS
+      let i = count, j = 1, k = 1;
+      while(data.drinks[i][`strIngredient${j}`] !== null){
+          let ingredient = document.createElement('li')
+          ingredient.innerText = data.drinks[i][`strIngredient${j}`]
+          document.querySelector('#ingredient').appendChild(ingredient)
+          j++
+      }
+      while(data.drinks[i][`strMeasure${k}`] !== null){
+          let measure = document.createElement('li')
+          measure.innerText = data.drinks[i][`strMeasure${k}`]
+          document.querySelector('#measurements').appendChild(measure)
+          k++
+      }
+    // }
+})
+    .catch(err => {
+        console.log(`error ${err}`)
+    });
+}
+
+function getWine(){
+  //SUPPOSED TO REMOVE ANY 'li' IN THE UL OF INGREDIENTS AND MEASUREMENTS
+  let li = document.getElementsByTagName('li')
+    while(li.length > 0){
+      li[0].remove();
+    }
+  // COUNT++ MOVES TO NEXT DRINK ON THE DRINK LIST. IN THIS CASE THE FIRST INDEX IN VODKA
+  count = 0
+  console.log(count)
+
+    //MAKES THE NEXT AND PREVIOUS BUTTONS APPEAR AFTER A DRINK IS ENTERED 
+    document.querySelector('#forward').style.display = 'inline';
+    document.querySelector('#backward').style.display = 'inline';
+
+  // let drink = document.querySelector('input').value.toLowerCase().trim();
+  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=wine`)
+
+    .then(res => res.json()) // parse response as JSON
+    .then(data => {
+      console.log(data)
+      // console.log(count)
+
+      // IF COUNT GOES ABOVE TOTAL DRINKS IN LIST ROTATE TO BEGINNING OF LIST
+      // if(count > data.drinks.length - 1){
+      //   console.log(count = 0)
+      //   count = 0
+      // }
+
+      // LINE OF CODE ADDS THE ALCHOHOL NAME TO THE INPUT 
+      document.querySelector('input').value = 'Wine'
+
+    // BELOW CODE CHANGES DOM TO NEXT DRINK
+      document.querySelector('#recipeNum').innerText = `Recipe Num: ${count + 1} of ${data.drinks.length}`
+      document.querySelector('h2').innerText = data.drinks[count].strDrink
+      document.querySelector('#instruct').innerHTML = data.drinks[count].strInstructions
+      document.querySelector('img').src = data.drinks[count].strDrinkThumb
+      document.querySelector('#glass').innerText = `Type of Glass: ${data.drinks[count].strGlass}`
+
+      // document.querySelector('ul').innerHTML = '';  THIS WILL REMOVE ALL CODE IN THE UL
+      
+      // for(let i = count, j = 1, k = 1; i < data.drinks.length; i++){
+      // BELOW IS TO DISPLAY DRINK INGREDIENTS AND MEASUREMENTS
+      let i = count, j = 1, k = 1;
+      while(data.drinks[i][`strIngredient${j}`] !== null){
+          let ingredient = document.createElement('li')
+          ingredient.innerText = data.drinks[i][`strIngredient${j}`]
+          document.querySelector('#ingredient').appendChild(ingredient)
+          j++
+      }
+      while(data.drinks[i][`strMeasure${k}`] !== null){
+          let measure = document.createElement('li')
+          measure.innerText = data.drinks[i][`strMeasure${k}`]
+          document.querySelector('#measurements').appendChild(measure)
+          k++
+      }
+    // }
+})
+    .catch(err => {
+        console.log(`error ${err}`)
+    });
+}
+
+// Open and close nav bar
 console.clear();
 
 const nav = document.getElementById('side-nav');
