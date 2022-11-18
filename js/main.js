@@ -22,7 +22,7 @@ beer.addEventListener('click', getBeer);
 wine.addEventListener('click', getWine);
 
 // THIS CLEARS THE INPUT VALUE TO AN EMPTY STRING/Original SEARCH
-// input.value = '';
+input.value = '';
 let drinkArr = [];
 // COUNT IS TO TRACK WHERE IN THE ARRAY THE LIST IS ON, STARTS AT INDEX 0
 let count = 0; 
@@ -89,7 +89,7 @@ while(data.drinks[i][`strMeasure${k}`] !== null){
 
 // FUNCTION BELOW RETURNS THE INPUT DRINK AT THE BEGINNING OF THE ARRAY, INDEX 0
 function searchCocktail(){
-
+        
         let drink = document.querySelector('input').value.toLowerCase().trim();
         
       //SUPPOSED TO REMOVE ANY 'li' IN THE UL OF INGREDIENTS AND MEASUREMENTS  
