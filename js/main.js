@@ -21,6 +21,8 @@ gin.addEventListener('click', getGin);
 beer.addEventListener('click', getBeer);
 wine.addEventListener('click', getWine);
 
+// THIS CLEARS THE INPUT VALUE TO AN EMPTY STRING/Original SEARCH
+// input.value = '';
 let drinkArr = [];
 // COUNT IS TO TRACK WHERE IN THE ARRAY THE LIST IS ON, STARTS AT INDEX 0
 let count = 0; 
@@ -532,7 +534,7 @@ function getGin(){
       // }
 
       // LINE OF CODE ADDS THE ALCHOHOL NAME TO THE INPUT 
-      document.querySelector('input').value = 'Rum'
+      document.querySelector('input').value = 'Gin'
 
     // BELOW CODE CHANGES DOM TO NEXT DRINK
       document.querySelector('#recipeNum').innerText = `Recipe Num: ${count + 1} of ${data.drinks.length}`
@@ -697,26 +699,3 @@ const showNavBtn = document.getElementById('show-nav');
 const container = document.getElementById('container');
 const navWidth = 15; // rems
 const navGutter = 1;
-
-nav.addEventListener('click', (event) => {
-	if(event.target.classList.contains('sub-menu-link')){
-    event.target.classList.toggle('active');
-  	const subMenu = event.target.nextElementSibling;
-    subMenu.classList.toggle('active');
-  }
-});
-
-showNavBtn.addEventListener('click', (event) => {
-  if (nav.style.left !== '0px') {
-    showNavBtn.classList.toggle('open');
-    nav.classList.toggle('open');
-  	container.classList.toggle('nav-open');
-    document.body.style.overflow = 'hidden';
-  } else {
-    showNavBtn.classList.toggle('open');
-    nav.classList.toggle('open');
-  	container.classList.toggle('nav-open');
-    document.body.style.overflow = 'auto';
-  }
-}, nav);
-
